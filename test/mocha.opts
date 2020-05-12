@@ -1,0 +1,8 @@
+--recursive
+
+#--exclude **/Auth.js
+#--exclude **/Settl.js
+#--exclude **/Term.js
+#--exclude **/Trans.js
+#--exclude **/Recon.js
+#--exclude **/Merch.js

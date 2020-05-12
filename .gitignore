@@ -1,0 +1,6 @@
+node_modules/
+py/
+files/**/*.xlsx
+yarn-error.log
+yarn.lock
+.env
