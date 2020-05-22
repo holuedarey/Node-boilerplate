@@ -7,6 +7,7 @@ import http from 'http';
 import 'dotenv/config';
 import routes from './routes';
 import socketSever from './socket';
+import adminSocketSever, { sendNotification, onConnect } from './socket/admin';
 import Logger from './helpers/Logger';
 
 const PORT = process.env.NODE_ENV === 'test' ? 3011 : process.env.PORT || 5000;
@@ -28,17 +29,12 @@ app.use(express.static('public'));
 app.use(express.static('files'))
 routes(app);
 
-/** Use SSL socket on production */
-if (process.env.USE_SSL) {
-  socketSever(httpsServer);
-  httpsServer.listen(PORT, '0.0.0.0', () => {
-    Logger.log(`Secure server running on PORT: ${PORT}`);
-  });
-} else {
-  socketSever(httpServer);
-  httpServer.listen(PORT, () => {
-    Logger.log(`app running on http://localhost:${PORT}`);
-  });
-}
+
+socketSever(httpServer);
+adminSocketSever(httpServer)
+
+httpServer.listen(PORT, () => {
+  Logger.log(`app running on http://localhost:${PORT}`);
+});
 
 export default app;

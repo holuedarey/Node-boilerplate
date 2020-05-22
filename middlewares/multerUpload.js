@@ -1,13 +1,13 @@
 import multer from 'multer';
 
 const multerUpload = field => async (request, response, next) => {
-  const basePath = 'files/settlements';
+  const basePath = 'files/category';
   const storage = multer.diskStorage({
     destination(req, file, cb) {
       cb(null, basePath);
     },
     filename(req, file, cb) {
-      cb(null, file.originalname);
+      cb(null, new Date().getTime().file.originalname);
     },
   });
 
@@ -22,7 +22,7 @@ const multerUpload = field => async (request, response, next) => {
     return cb(null, false);
   };
 
-  const upload = multer({ storage, fileFilter }).single(field);
+  const upload = multer({ storage }).single(field);
   upload(request, response, (err) => {
     if (err) {
       request.body[field] = 'invalid';
