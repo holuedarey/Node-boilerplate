@@ -113,11 +113,9 @@ const registerRules = [
     belongsto: [
       'admin',
       'super admin',
-      'account_rel_manager',
-      'branch_op_manager',
-      'branch_manager',
-      'internal_control',
-      'head_office',
+      'customer',
+      'freelancer',
+     
     ],
   },
 ];
@@ -151,117 +149,52 @@ const loginRules = [
   },
 ];
 
-const settlementConfigRules = [
+
+const bookingRules = [
   {
-    field: 'merchant_id',
+    field: 'address',
+    rules: 'required',
+    messages: {
+      required: 'Address is required.',
+    },
+  },
+  {
+    field: 'service_date',
     rules: 'required',
   },
   {
-    field: 'settlement_count',
-    rules: 'required|number',
+    field: 'service_time',
+    rules: 'required',
   },
   {
-    field: 'added_msc',
-    rules: 'number',
+    field: 'title',
+    rules: 'required',
+  },
+  {
+    field: 'description',
+    rules: 'required',
+  },
+  {
+    field: 'service',
+    rules: 'required',
+  },
+  {
+    field: 'category',
+    rules: 'required',
   },
 ];
 
-const tSwitchRules = [
+const categoryRules = [
   {
-    field: 'name',
+    field: 'title',
     rules: 'required',
+    messages: {
+      required: 'Title is required.',
+    },
   },
   {
-    field: 'headers',
+    field: 'description',
     rules: 'required',
-  },
-  {
-    field: 'transactionTime',
-    rules: 'required',
-  },
-  {
-    field: 'rrn',
-    rules: 'required',
-  },
-  {
-    field: 'terminalId',
-    rules: 'required',
-  },
-  {
-    field: 'merchantId',
-    rules: 'required',
-  },
-  {
-    field: 'amount',
-    rules: 'required',
-  },
-  {
-    field: 'maskedPan',
-    rules: 'required',
-  },
-  {
-    field: 'header_row_number',
-    rules: 'required|number',
-  },
-];
-
-const sSwitchRules = [
-  {
-    field: 'name',
-    rules: 'required',
-  },
-  {
-    field: 'headers',
-    rules: 'required',
-  },
-  {
-    field: 'transaction_date',
-    rules: 'required',
-  },
-  {
-    field: 'rrn',
-    rules: 'required',
-  },
-  {
-    field: 'terminal_id',
-    rules: 'required',
-  },
-  {
-    field: 'merchant_id',
-    rules: 'required',
-  },
-  {
-    field: 'transaction_amount',
-    rules: 'required',
-  },
-  // {
-  //   field: 'pan',
-  //   rules: 'required',
-  // },
-  {
-    field: 'header_row_number',
-    rules: 'required|number',
-  },
-];
-
-const accountNoConfigRules = [
-  {
-    field: 'account_no',
-    rules: 'required|number',
-  },
-];
-
-const onlineTermRules = [
-  {
-    field: 'online_seconds',
-    rules: 'required|number',
-  },
-];
-
-const activeTermRules = [
-  {
-    field: 'active_seconds',
-    rules: 'required|number',
   },
 ];
 
@@ -272,89 +205,7 @@ const setEmailRules = [
   },
 ];
 
-const merchantEmailRules = [
-  {
-    field: 'email',
-    rules: 'required|email',
-  },
-  {
-    field: 'merchant_id',
-    rules: 'required',
-  },
-];
-
-const addTransRules = {
-  terminal_id: 'required',
-  merchant_id: 'required',
-  rrn: 'required',
-  stan: 'required',
-  pan: 'required',
-  auth_code: 'required',
-  response_code: 'required',
-  response_msg: 'required',
-  amount: 'required|number',
-  transaction_date: 'required',
-};
-
-const termHealthRules = {
-  lTxnAt: 'required',
-  // simID: 'required',
-  btemp: 'number',
-  ctime: 'required',
-  tmanu: 'required',
-  // coms: 'required',
-  tid: 'required',
-  mid: 'required',
-  // tmn: 'required',
-  sv: 'required',
-  // hb: 'required',
-  // cs: 'required',
-  bl: 'number',
-  // ps: 'required',
-  // ss: 'required',
-  serial: 'required',
-  ptad: 'required',
-  imsi: 'required',
-  // sim: 'required',
-};
-
-const configItemRules = {
-  low_battery_level: 'number',
-  low_network_level: 'number',
-  notify_bad_printer: {
-    rules: 'belongsto',
-    belongsto: [true, false],
-  },
-  notify_inactive_terminal: {
-    rules: 'belongsto',
-    belongsto: [true, false],
-  },
-  notify_inactive_terminal_days: 'number',
-};
-
-const termSwitchRules = {
-  merchant_name: 'required',
-  merchant_email: 'required',
-  merchant_phone: 'required',
-  merchant_id: 'required',
-  terminal_id: 'required',
-  merchant_account_nr: 'required',
-  merchant_contact: 'required',
-  // mcc: 'required',
-  // state_code: 'required',
-  // merchant_account_name: 'required',
-  ptsp: 'required',
-  serial: 'required',
-  device_name: 'required',
-  app_name: 'required',
-  // app_version: 'required',
-  // network_type: 'required',
-};
 
 export {
-  registerRules, loginRules, resetPasswordRules, settlementConfigRules,
-  accountNoConfigRules, sSwitchRules, activeTermRules, onlineTermRules,
-  setEmailRules, changePasswordRules, merchantEmailRules, merchOnBoardRules,
-  setRoleRules, merchOnBoard2Rules, termOnBoardRules, tSwitchRules,
-  addTransRules, termHealthRules, configItemRules, termSwitchRules,
+  registerRules, loginRules, resetPasswordRules, setEmailRules, changePasswordRules,  setRoleRules, bookingRules, categoryRules
 };

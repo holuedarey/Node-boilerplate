@@ -41,8 +41,7 @@ class AuthController {
         email,
         password,
         position,
-        roles,
-        registered_by: req.user._id,
+        roles 
       });
       user.save();
 

@@ -2,7 +2,6 @@ import express from 'express';
 import AuthController from '../controllers/AuthController';
 import trimInputs from '../middlewares/trimInputs';
 import validateInputs from '../middlewares/validateInputs';
-import { authenticated, isAdmin } from '../middlewares/authentication';
 import {
   registerRules, loginRules, changePasswordRules, resetPasswordRules,
 } from '../middlewares/validationRules';
