@@ -10,7 +10,7 @@
     "cover": "nyc --reporter=html --reporter=text mocha --require babel-register --recursive --exit",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "build": "babel ./ -d build --copy-files --ignore node_modules",
-    "start": "node build/app.js",
+    "start": "npm run build && node build/app",
     "start:dev": "./node_modules/.bin/babel-watch app.js",
     "pm2:restart": "./pm2.sh"
   },
